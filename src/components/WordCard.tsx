@@ -91,6 +91,30 @@ export function WordCard({
 
   const handleSpeak = () => speak(phrase);
 
+  // Update handleWordSpeak to use index-based highlighting
+  const handleWordSpeak = (word: string, index: number) => {
+    if (isPlaying) {
+      cancelSpeech();
+    }
+    setCurrentWord(index);
+    setIsPlaying(true);
+
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = lang === 'zh' ? 'zh-CN' : 'en-US';
+
+    utterance.onend = () => {
+      setCurrentWord(-1);
+      setIsPlaying(false);
+    };
+
+    utterance.onerror = () => {
+      setCurrentWord(-1);
+      setIsPlaying(false);
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
+
   // Split the phrase for display, filtering out empty strings and whitespace
   const displayWords =
     lang === 'zh'
@@ -109,10 +133,10 @@ export function WordCard({
             } text`}>
             {isPlaying ? (
               <div className="flex items-center justify-center">
-                <PauseCircleIcon className="w-8 h-8 group-hover:text-zinc-700" />
+                <PauseCircleIcon className="w-8 h-8 text-indigo-600 group-hover:text-zinc-500" />
               </div>
             ) : (
-              <PlayCircleIcon className="w-8 h-8 group-hover:text-zinc-700" />
+              <PlayCircleIcon className="w-8 h-8 group-hover:text-indigo-600" />
             )}
           </button>
         )}
@@ -121,27 +145,52 @@ export function WordCard({
             {showSpeechHighlight
               ? phrase.split(/(\s+|\b)/).map((part, index) => {
                   if (part.trim() === '') {
-                    // Render spaces and punctuation without highlighting
                     return <span key={index}>{part}</span>;
                   }
-                  // Only highlight actual words when they are being read
                   const isHighlighted =
-                    lang === 'zh'
+                    isPlaying &&
+                    (lang === 'zh'
                       ? currentWord === index
-                      : displayWords.indexOf(part) === currentWord;
+                      : displayWords.indexOf(part) === currentWord);
                   return (
                     <span
                       key={index}
-                      className={
+                      className={`${
                         isHighlighted
                           ? 'bg-yellow-200 transition-colors duration-200'
                           : ''
+                      } ${
+                        part.trim()
+                          ? 'cursor-pointer hover:text-indigo-600'
+                          : ''
+                      }`}
+                      onClick={() =>
+                        part.trim() &&
+                        handleWordSpeak(
+                          part,
+                          lang === 'zh' ? index : displayWords.indexOf(part)
+                        )
                       }>
                       {part}
                     </span>
                   );
                 })
-              : phrase}
+              : phrase.split(/(\s+|\b)/).map((part, index) => (
+                  <span
+                    key={index}
+                    className={
+                      part.trim() ? 'cursor-pointer hover:text-indigo-600' : ''
+                    }
+                    onClick={() =>
+                      part.trim() &&
+                      handleWordSpeak(
+                        part,
+                        lang === 'zh' ? index : displayWords.indexOf(part)
+                      )
+                    }>
+                    {part}
+                  </span>
+                ))}
           </p>
           {showPinyin && lang === 'zh' && (
             <p className="text-sm text-zinc-600">{pinyin(phrase)}</p>
