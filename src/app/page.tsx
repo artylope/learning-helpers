@@ -51,24 +51,35 @@ export default function Home() {
         </div>
       </div>
 
-      <WordCard
-        phrase="你好"
-        translation="Hello"
-        lang="zh"
-        readAloud={readAloud}
-        showPinyin={showPinyin}
-        showTranslation={showTranslation}
-        showSpeechHighlight={showSpeechHighlight}
-      />
-      <WordCard
-        phrase="Hello"
-        translation="你好"
-        lang="en"
-        readAloud={readAloud}
-        showPinyin={showPinyin}
-        showTranslation={showTranslation}
-        showSpeechHighlight={showSpeechHighlight}
-      />
+      <div className="my-6 space-y-4">
+        <WordCard
+          phrase="我有一个梦想, 你呢？"
+          translation="I have a dream, what's yours?"
+          lang="zh"
+          readAloud={readAloud}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          showSpeechHighlight={showSpeechHighlight}
+        />
+        <WordCard
+          phrase="The quick brown fox jumps over the lazy dog"
+          translation="一只狐狸跳过了一只懒狗"
+          lang="en"
+          readAloud={readAloud}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          showSpeechHighlight={showSpeechHighlight}
+        />{' '}
+        <WordCard
+          phrase="一只狐狸跳过了一只懒狗 "
+          translation="The quick brown fox jumps over the lazy dog"
+          lang="zh"
+          readAloud={readAloud}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          showSpeechHighlight={showSpeechHighlight}
+        />
+      </div>
     </div>
   );
 }
