@@ -13,9 +13,10 @@ export default function Home() {
     <div className="container mx-auto">
       <h1 className="text-4xl font-semibold my-8">Learning Helpers</h1>
 
-      <div className="my-6 space-y-2 flex flex-col gap-2 border rounded-lg p-4">
-        <h2 className="text-xl font-semibold">Settings</h2>
+      <div className="my-6 space-y-4 flex flex-col gap-2 border rounded-lg p-4">
+        <h2 className="text-2xl font-semibold">Settings</h2>
         <div className="flex flex-col gap-3 text-sm">
+          <h3 className="font-semibold">Text display</h3>
           <div className="flex items-center space-x-2">
             <Switch
               id="show-pinyin"
@@ -32,6 +33,9 @@ export default function Home() {
             />
             <label htmlFor="show-translation">Show translation</label>
           </div>
+        </div>{' '}
+        <div className="flex flex-col gap-3 text-sm">
+          <h3 className="font-semibold">Reading</h3>
           <div className="flex items-center space-x-2 ">
             <Switch
               id="read-aloud"
