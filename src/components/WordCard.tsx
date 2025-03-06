@@ -1,11 +1,6 @@
 'use client';
 
-import { Volume2, Square } from 'lucide-react';
-import {
-  PlayCircleIcon,
-  StopCircleIcon,
-  PauseCircleIcon,
-} from '@heroicons/react/24/solid';
+import { PlayCircleIcon, PauseCircleIcon } from '@heroicons/react/24/solid';
 
 import { pinyin } from 'pinyin-pro';
 import { useState } from 'react';
@@ -114,10 +109,10 @@ export function WordCard({
             } text`}>
             {isPlaying ? (
               <div className="flex items-center justify-center">
-                <PauseCircleIcon className="w-8 h-8 group-hover:text-zinc-800" />
+                <PauseCircleIcon className="w-8 h-8 group-hover:text-zinc-700" />
               </div>
             ) : (
-              <PlayCircleIcon className="w-8 h-8 group-hover:text-zinc-800" />
+              <PlayCircleIcon className="w-8 h-8 group-hover:text-zinc-700" />
             )}
           </button>
         )}
