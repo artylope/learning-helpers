@@ -1,6 +1,6 @@
 'use client';
 
-import { PlayCircleIcon, PauseCircleIcon } from '@heroicons/react/24/solid';
+import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 
 import { pinyin } from 'pinyin-pro';
 import { useState } from 'react';
@@ -123,25 +123,28 @@ export function WordCard({
 
   return (
     <div className="py-4 heading-5">
-      <div className="flex flex-col gap-0">
+      <div className="flex flex-col gap-2">
         {readAloud && (
           <button
             onClick={isPlaying ? cancelSpeech : handleSpeak}
-            className="w-10 h-10 -ml-2 flex items-center justify-center group rounded-full"
+            className="w-9 h-9 bg-indigo-600 text-white hover:bg-zinc-500 -ml-1 flex items-center justify-center group rounded-full"
             aria-label={`${isPlaying ? 'Stop' : 'Speak'} ${
               lang === 'zh' ? 'Chinese' : 'English'
             } text`}>
             {isPlaying ? (
               <div className="flex items-center justify-center">
-                <PauseCircleIcon className="w-8 h-8 text-indigo-600 group-hover:text-zinc-500" />
+                <PauseIcon className="w-5 h-5 " />
               </div>
             ) : (
-              <PlayCircleIcon className="w-8 h-8 group-hover:text-indigo-600" />
+              <PlayIcon className="w-5 h-5 ml-0.5 " />
             )}
           </button>
         )}
         <div className="flex flex-col gap-1">
-          <p className="font-bold mb-0.5">
+          <p
+            className={`${
+              lang === 'zh' ? 'font-sans-zh' : 'font-sans'
+            } font-semibold mb-0.5`}>
             {showSpeechHighlight
               ? phrase.split(/(\s+|\b)/).map((part, index) => {
                   if (part.trim() === '') {
