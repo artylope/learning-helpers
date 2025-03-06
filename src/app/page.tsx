@@ -42,7 +42,7 @@ export default function Home() {
               checked={readAloud}
               onCheckedChange={setReadAloud}
             />
-            <label htmlFor="read-aloud">Able to read aloud</label>
+            <label htmlFor="read-aloud">Show button to read aloud</label>
           </div>
           {readAloud && (
             <div className="flex items-center space-x-2">
@@ -52,7 +52,7 @@ export default function Home() {
                 onCheckedChange={setShowSpeechHighlight}
               />
               <label htmlFor="show-highlight">
-                Show speech highlight when it is being read aloud
+                Highlight words when it is being read aloud
               </label>
             </div>
           )}
