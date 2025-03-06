@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="my-6 space-y-4 px-2">
+      <div className="my-6 space-y-4 px-2 pb-12">
         <WordCard
           phrase="我有一个梦想, 你呢？"
           translation="I have a dream, what's yours?"
