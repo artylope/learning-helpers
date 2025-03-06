@@ -35,7 +35,7 @@ export default function Home() {
               <label htmlFor="show-translation">Show translation</label>
             </div>
           </div>{' '}
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-3">
             <h3 className="font-semibold">Reading</h3>
             <div className="flex items-center space-x-2 ">
               <Switch
