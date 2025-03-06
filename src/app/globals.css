@@ -187,3 +187,9 @@
     font-family: var(--font-sans);
   }
 }
+
+@layer utilities {
+  .container {
+    @apply max-w-screen-md mx-auto px-4;
+  }
+}
