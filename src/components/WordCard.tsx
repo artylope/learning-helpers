@@ -140,7 +140,7 @@ export function WordCard({
             )}
           </button>
         )}
-        <div>
+        <div className="flex flex-col gap-0.5">
           <p className="text-lg font-bold">
             {showSpeechHighlight
               ? phrase.split(/(\s+|\b)/).map((part, index) => {
