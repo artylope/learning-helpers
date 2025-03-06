@@ -122,7 +122,7 @@ export function WordCard({
       : phrase.split(/(\s+|\b)/).filter((word) => word.trim()); // Keep only actual words
 
   return (
-    <div className="py-4">
+    <div className="py-4 heading-5">
       <div className="flex flex-col gap-0">
         {readAloud && (
           <button
@@ -140,8 +140,8 @@ export function WordCard({
             )}
           </button>
         )}
-        <div className="flex flex-col gap-0.5">
-          <p className="text-lg font-bold">
+        <div className="flex flex-col gap-1">
+          <p className="font-bold mb-0.5">
             {showSpeechHighlight
               ? phrase.split(/(\s+|\b)/).map((part, index) => {
                   if (part.trim() === '') {
@@ -193,9 +193,11 @@ export function WordCard({
                 ))}
           </p>
           {showPinyin && lang === 'zh' && (
-            <p className="text-sm text-zinc-600">{pinyin(phrase)}</p>
+            <p className="text-zinc-600 body-xl">{pinyin(phrase)}</p>
           )}
-          {showTranslation && <p className="text-sm">{translation}</p>}
+          {showTranslation && (
+            <p className="text-zinc-600 body-xl">{translation}</p>
+          )}
         </div>
       </div>
     </div>

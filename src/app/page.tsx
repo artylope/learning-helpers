@@ -16,7 +16,7 @@ export default function Home() {
       <div className="my-6 space-y-5 flex flex-col border rounded-lg p-4 pb-6">
         <h2 className="text-xl font-semibold">Settings</h2>
         <div className="space-y-4">
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-3">
             <h3 className="font-semibold">Text display</h3>
             <div className="flex items-center space-x-2">
               <Switch
